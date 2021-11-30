@@ -464,7 +464,7 @@
     "releaseDate": "21-02-10",
     "releaseURL": "https://github.com/mumble-voip/mumble/releases/tag/1.3.4",
     "guideURL": "guideurl",
-    "description": "description",
+    "description": "A voice chat client and server.",
     "box": "green-box"
   }
 ]
