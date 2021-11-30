@@ -1,0 +1,35 @@
+checkReleases pi-hole/pi-hole Pi-hole
+checkReleases jellyfin/jellyfin Jellyfin
+checkReleases portainer/portainer Portainer
+checkReleases traefik/traefik Traefik
+checkReleases caddyserver/caddy Caddy
+checkReleases nodejs/node Node.js
+checkReleases rust-lang/rust Rust
+checkReleases moby/moby Moby
+checkReleases julialang/julia Julia
+checkReleases nextcloud/server Nextcloud
+checkReleases homebrew/brew Homebrew
+checkReleases bastienwirtz/homer Homer
+checkReleases tryghost/ghost Ghost
+checkReleases tensorflow/tensorflow TensorFlow
+checkReleases scala/scala Scala
+checkReleases thelounge/thelounge "The Lounge"
+checkReleases twbs/bootstrap Bootstrap
+checkReleases angular/angular Angular
+checkReleases atom/atom Atom
+checkReleases expressjs/express Express
+checkReleases redis/redis Redis
+checkReleases docker/compose "Docker Compose"
+checkReleases belphemur/soundswitch SoundSwitch
+checkReleases home-assistant/core "Home Assistant"
+checkReleases kovidgoyal/calibre Calibre
+checkReleases audacity/audacity Audacity
+checkReleases airsonic/airsonic Airsonic
+checkReleases dani-garcia/vaultwarden Vaultwarden
+checkReleases gorhill/uBlock "uBlock Origin"
+checkReleases dbeaver/dbeaver DBeaver
+checkReleases photonstorm/phaser Phaser
+checkReleases grafana/grafana Grafana
+checkReleases joomla/joomla-cms Joomla!
+checkReleases jekyll/jekyll Jekyll
+checkReleases mumble-voip/mumble Mumble
