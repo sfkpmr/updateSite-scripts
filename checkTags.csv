@@ -1,0 +1,16 @@
+nginx/nginx,nginx
+qbittorrent/qbittorrent,qBittorrent
+apache/httpd,"Apache HTTP"
+openvpn/openvpn,OpenVPN
+perl/perl5,Perl
+git/git,Git
+django/django,Django
+pfsense/pfsense,pfSense
+opnsense/core,OPNsense
+wireshark/wireshark,Wireshark
+apache/guacamole-server,Guacamole
+deluge-torrent/deluge,Deluge
+vim/vim,Vim
+rails/rails,Rails
+apache/tomcat,"Apache Tomcat"
+kiwiirc/kiwiirc,"Kiwi IRC"
