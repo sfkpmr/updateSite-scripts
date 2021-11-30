@@ -4,9 +4,9 @@ user=sfkpmr
 token=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
 rootPath=/web/updateSite
 publicPath="${rootPath}"/software
-jsonfile="${rootPath}"/json/software.json
-tempfile="${rootPath}"/json/tempjson.json
-logfile="${rootPath}"/log.log
+jsonFile="${rootPath}"/json/software.json
+tempFile="${rootPath}"/json/tempjson.json
+logFile="${rootPath}"/log.log
 
 checkTags () {
 
@@ -43,7 +43,7 @@ then
 		validateVersion ${version} "${2}" ${releaseDate} ${releaseURL}
 
 else
-	echo "$repo" >> $logfile
+	echo "$repo" >> $logFile
 fi
 
 }
@@ -71,7 +71,7 @@ then
                 #version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}')
                 version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[[:alnum:]]{1,6}')
 	else
-		echo "No dots in ${2} releaseName, likely faulty release, or latest release excluded - setting version to 0." >> $logfile
+		echo "No dots in ${2} releaseName, likely faulty release, or latest release excluded - setting version to 0." >> $logFile
 		version=0
 	fi
 
@@ -88,18 +88,18 @@ then
 	echo "Version " ${version} "namn " "${2}" ${releaseDate} ${releaseURL}
 	validateVersion ${version} "${2}" ${releaseDate} ${releaseURL}
 else
-	echo "$repo" >> $logfile
+	echo "$repo" >> $logFile
 fi
 
 }
 
 checkList () {
 
-if [ ! -f "$jsonfile" ]; then
-	echo "[]" > $jsonfile
+if [ ! -f "$jsonFile" ]; then
+	echo "[]" > $jsonFile
 fi
 
-if grep -o -q "${1}" $jsonfile
+if grep -o -q "${1}" $jsonFile
 then
         echo "${1} FINNS"
 else
@@ -116,7 +116,7 @@ else
         fi
 
 	#Add new item to JSON
-        jq --arg name "$1" --arg colour "$boxColour" '. += [{"name": $name, "releaseVersion": "-", "releaseDate": "-", "releaseURL": "-", "guideURL": "guideurl", "description": "description", "box": $colour}]' $jsonfile > $tempfile && mv $tempfile $jsonfile
+        jq --arg name "$1" --arg colour "$boxColour" '. += [{"name": $name, "releaseVersion": "-", "releaseDate": "-", "releaseURL": "-", "guideURL": "guideurl", "description": "description", "box": $colour}]' $jsonFile > $tempFile && mv $tempFile $jsonFile
 fi
 
 }
@@ -127,12 +127,12 @@ echo "Adding ${1} ${2} ${3} ${4}" ${1} ${2} ${3} ${4}
 
 checkList "${1}"
 
-cat $jsonfile |
+cat $jsonFile |
         jq --arg name "${1}" --arg version ${2} --arg releaseDate ${3} --arg releaseURL ${4} 'map(if .name == $name
                   then . + {"releaseDate": $releaseDate, "releaseVersion": $version, "releaseURL": $releaseURL}
                   else .
                   end
-                 )' > $tempfile && mv $tempfile $jsonfile
+                 )' > $tempFile && mv $tempFile $jsonFile
 }
 
 checkMariaDb () {
@@ -141,7 +141,7 @@ mariaAPI=$(curl https://downloads.mariadb.org/rest-api/mariadb/10.5/)
 
 if [ -z "$mariaAPI" ]
 then
-	echo "Empty Maria API return." >> $logfile
+	echo "Empty Maria API return." >> $logFile
 else
 	releaseVersion=$(echo "$mariaAPI" | jq '.releases | .[] | .release_id' | sed -n '1p' | grep -E -o '[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}')
 	releaseDate=$(echo "$mariaAPI" | jq '.releases | .[] | .date_of_release' | sed -n '1p' | grep -E -o '[0-9]{1,2}'-'[0-9]{1,2}'-'[0-9]{1,2}')
@@ -186,34 +186,34 @@ counter=$(echo ${1} | grep -o '\.' | wc -l)
 #echo "ADAMPETER $ver1 $ver2 $ver3 $ver4 $ver5 $ver6" 
 
 if [ "$currentVersion" = "${1}" ]; then
-	echo "$date ${2} is already on version ${1}" >> $logfile
+	echo "$date ${2} is already on version ${1}" >> $logFile
 elif [ "$ver5" > "$ver1" ]; then
 		updateList "${2}" ${1} ${3} ${4}
                 echo "${1}" > "$file"
-                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logfile
+                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logFile
 elif [ "$counter" == 1 ]; then
         if [[ "$ver5" -ge "$ver1" && "$ver6" -ge "$ver2" ]]; then
                 #file names to lowercase
                 updateList "${2}" ${1} ${3} ${4}
                 echo "${1}" > "$file"
-                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logfile
+                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logFile
         fi
 elif [ "$counter" == 2 ]; then
 	if [[ "$ver5" -ge "$ver1" && "$ver6" -ge "$ver2" && "$ver7" -ge "$ver3" ]]; then
                 #file names to lowercase
                 updateList "${2}" ${1} ${3} ${4}
                 echo "${1}" > "$file"
-                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logfile
+                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logFile
 	fi
 elif [ "$counter" == 3 ]; then
 	if [[ "$ver5" -ge "$ver1" && "$ver6" -ge "$ver2" && "$ver7" -ge "$ver3" && "$ver8" -ge "$ver4" ]]; then
                 #file names to lowercase
                 updateList "${2}" ${1} ${3} ${4}
                 echo "${1}" > "$file"
-                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logfile
+                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logFile
 	fi
 else
-	echo "$date ${2} was not updated from $currentVersion to ${1}" >> $logfile
+	echo "$date ${2} was not updated from $currentVersion to ${1}" >> $logFile
 fi
 
 }
@@ -285,4 +285,4 @@ checkReleases mumble-voip/mumble Mumble
 
 date=$(TZ=Europe/Stockholm date +'%D %R:%S')
 
-echo "Update run ended at $date" >> $logfile
+echo "Update run ended at $date" >> $logFile
