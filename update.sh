@@ -2,7 +2,7 @@
 
 user=sfkpmr
 token=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
-publicPath=/srv/public
+publicPath=/srv/software
 jsonfile=/srv/json/software.json
 tempfile=/srv/json/tempjson.json
 logfile=/srv/log.log
