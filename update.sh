@@ -274,6 +274,7 @@ checkTags kiwiirc/kiwiirc "Kiwi IRC"
 checkReleases mumble-voip/mumble Mumble
 
 #Need fix
+#Mariadb
 #checkTags golang/go go
 #checkTags owncloud/core owncloud
 #checkTags mongodb/mongo mongodb
