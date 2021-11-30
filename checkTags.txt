@@ -1,0 +1,16 @@
+checkTags nginx/nginx nginx
+checkTags qbittorrent/qbittorrent qBittorrent
+checkTags apache/httpd "Apache HTTP"
+checkTags openvpn/openvpn OpenVPN
+checkTags perl/perl5 Perl
+checkTags git/git Git
+checkTags django/django Django
+checkTags pfsense/pfsense pfSense
+checkTags opnsense/core OPNsense
+checkTags wireshark/wireshark Wireshark
+checkTags apache/guacamole-server Guacamole
+checkTags deluge-torrent/deluge Deluge
+checkTags vim/vim Vim
+checkTags rails/rails Rails
+checkTags apache/tomcat "Apache Tomcat"
+checkTags kiwiirc/kiwiirc "Kiwi IRC"
