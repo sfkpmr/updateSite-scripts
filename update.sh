@@ -2,10 +2,11 @@
 
 user=sfkpmr
 token=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
-publicPath=/srv/software
-jsonfile=/srv/json/software.json
-tempfile=/srv/json/tempjson.json
-logfile=/srv/log.log
+rootPath=/web/updateSite
+publicPath="${rootPath}"/software
+jsonfile="${rootPath}"/json/software.json
+tempfile="${rootPath}"/json/tempjson.json
+logfile="${rootPath}"/log.log
 
 checkTags () {
 

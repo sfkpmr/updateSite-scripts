@@ -1,0 +1,470 @@
+[
+  {
+    "name": "Redis",
+    "releaseVersion": "6.2.6",
+    "releaseDate": "21-10-04",
+    "releaseURL": "https://github.com/redis/redis/releases/tag/6.2.6",
+    "guideURL": "https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04",
+    "description": "An in-memory database.",
+    "box": "red-box"
+  },
+  {
+    "name": "MariaDB",
+    "releaseVersion": "10.5.13",
+    "releaseDate": "21-11-08",
+    "releaseURL": "https://mariadb.com/kb/en/mariadb-10513-release-notes/",
+    "guideURL": "https://mariadb.com/kb/en/binary-packages/",
+    "description": "A database forked from MySQL.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Pi-hole",
+    "releaseVersion": "5.6",
+    "releaseDate": "21-10-23",
+    "releaseURL": "https://github.com/pi-hole/pi-hole/releases/tag/v5.6",
+    "guideURL": "https://docs.pi-hole.net/main/basic-install/",
+    "description": "An adblocker for your network.",
+    "box": "green-box"
+  },
+  {
+    "name": "Jellyfin",
+    "releaseVersion": "10.7.7",
+    "releaseDate": "21-09-06",
+    "releaseURL": "https://github.com/jellyfin/jellyfin/releases/tag/v10.7.7",
+    "guideURL": "https://jellyfin.org/docs/general/administration/installing.html",
+    "description": "An open source media server.",
+    "box": "blue-box"
+  },
+  {
+    "name": "nginx",
+    "releaseVersion": "1.21.4",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/nginx/nginx/releases/tag/release-1.21.4",
+    "guideURL": "https://www.nginx.com/resources/wiki/start/topics/tutorials/install/",
+    "description": "Web server, reverse proxy and load balancer all-in-one.",
+    "box": "blue-box"
+  },
+  {
+    "name": "qBittorrent",
+    "releaseVersion": "4.3.9",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/qbittorrent/qbittorrent/releases/tag/release-4.3.9",
+    "guideURL": "https://github.com/qbittorrent/qBittorrent/wiki/Installing-qBittorrent",
+    "description": "A BitTorrent client.",
+    "box": "green-box"
+  },
+  {
+    "name": "Portainer",
+    "releaseVersion": "2.9.3",
+    "releaseDate": "21-11-21",
+    "releaseURL": "https://github.com/portainer/portainer/releases/tag/2.9.3",
+    "guideURL": "https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/",
+    "description": "A web interface for Docker.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Traefik",
+    "releaseVersion": "2.5.4",
+    "releaseDate": "21-11-08",
+    "releaseURL": "https://github.com/traefik/traefik/releases/tag/v2.5.4",
+    "guideURL": "https://doc.traefik.io/traefik/getting-started/install-traefik/",
+    "description": "A reverse proxy and load balancer.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Apache HTTP",
+    "releaseVersion": "2.4.51",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/apache/httpd/releases/tag/2.4.51",
+    "guideURL": "https://httpd.apache.org/docs/current/install.html",
+    "description": "A web server.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Caddy",
+    "releaseVersion": "2.4.6",
+    "releaseDate": "21-11-08",
+    "releaseURL": "https://github.com/caddyserver/caddy/releases/tag/v2.4.6",
+    "guideURL": "https://caddyserver.com/docs/install",
+    "description": "A reverse proxy written in Go.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Node.js",
+    "releaseVersion": "17.1.0",
+    "releaseDate": "21-11-09",
+    "releaseURL": "https://github.com/nodejs/node/releases/tag/v17.1.0",
+    "guideURL": "https://nodejs.dev/learn/how-to-install-nodejs",
+    "description": "A JavaScript runtime.",
+    "box": "blue-box"
+  },
+  {
+    "name": "OpenVPN",
+    "releaseVersion": "2.5.4",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/openvpn/openvpn/releases/tag/v2.5.4",
+    "guideURL": "https://openvpn.net/community-resources/how-to/#installing-openvpn",
+    "description": "A VPN solution.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Rust",
+    "releaseVersion": "1.56.1",
+    "releaseDate": "21-11-01",
+    "releaseURL": "https://github.com/rust-lang/rust/releases/tag/1.56.1",
+    "guideURL": "https://www.rust-lang.org/tools/install",
+    "description": "The Rust programming language.",
+    "box": "red-box"
+  },
+  {
+    "name": "Moby",
+    "releaseVersion": "20.10.11",
+    "releaseDate": "21-11-18",
+    "releaseURL": "https://github.com/moby/moby/releases/tag/v20.10.11",
+    "guideURL": "https://linuxconfig.org/how-to-install-and-configure-docker-ce-moby-engine-on-fedora-32",
+    "description": "The Moby Project.",
+    "box": "red-box"
+  },
+  {
+    "name": "Julia",
+    "releaseVersion": "1.6.4",
+    "releaseDate": "21-11-19",
+    "releaseURL": "https://github.com/julialang/julia/releases/tag/v1.6.4",
+    "guideURL": "https://docs.julialang.org/en/v1/manual/getting-started/",
+    "description": "The Julia programming language.",
+    "box": "red-box"
+  },
+  {
+    "name": "Nextcloud",
+    "releaseVersion": "22.2.3",
+    "releaseDate": "21-11-16",
+    "releaseURL": "https://github.com/nextcloud/server/releases/tag/v22.2.3",
+    "guideURL": "https://docs.nextcloud.com/server/latest/admin_manual/installation/source_installation.html",
+    "description": "A solution for hosting your own cloud.",
+    "box": "green-box"
+  },
+  {
+    "name": "Homebrew",
+    "releaseVersion": "3.3.6",
+    "releaseDate": "21-11-29",
+    "releaseURL": "https://github.com/homebrew/brew/releases/tag/3.3.6",
+    "guideURL": "https://docs.brew.sh/Installation",
+    "description": "A package manager for MacOS and Linux.",
+    "box": "green-box"
+  },
+  {
+    "name": "Homer",
+    "releaseVersion": "21.09.2",
+    "releaseDate": "21-09-15",
+    "releaseURL": "https://github.com/bastienwirtz/homer/releases/tag/v21.09.2",
+    "guideURL": "https://github.com/bastienwirtz/homer#getting-started",
+    "description": "A homepage for your server.",
+    "box": "green-box"
+  },
+  {
+    "name": "Ghost",
+    "releaseVersion": "4.24.0",
+    "releaseDate": "21-11-26",
+    "releaseURL": "https://github.com/tryghost/ghost/releases/tag/v4.24.0",
+    "guideURL": "https://ghost.org/docs/install/",
+    "description": "A headless CMS.",
+    "box": "green-box"
+  },
+  {
+    "name": "TensorFlow",
+    "releaseVersion": "2.6.2",
+    "releaseDate": "21-11-04",
+    "releaseURL": "https://github.com/tensorflow/tensorflow/releases/tag/v2.6.2",
+    "guideURL": "https://www.tensorflow.org/install/",
+    "description": "A machine learning platform.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Perl",
+    "releaseVersion": "5.35.6",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/perl/perl5/releases/tag/v5.35.6",
+    "guideURL": "https://learn.perl.org/installing/",
+    "description": "The Perl programming language.",
+    "box": "green-box"
+  },
+  {
+    "name": "Scala",
+    "releaseVersion": "2.13.7",
+    "releaseDate": "21-11-01",
+    "releaseURL": "https://github.com/scala/scala/releases/tag/v2.13.7",
+    "guideURL": "https://docs.scala-lang.org/getting-started/index.html",
+    "description": "The Scala programming language.",
+    "box": "green-box"
+  },
+  {
+    "name": "Git",
+    "releaseVersion": "2.34.1",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/git/git/releases/tag/v2.34.1",
+    "guideURL": "https://git-scm.com/book/en/v2/Getting-Started-Installing-Git",
+    "description": "A version control and collaboration system for software development.",
+    "box": "blue-box"
+  },
+  {
+    "name": "The Lounge",
+    "releaseVersion": "4.3.0",
+    "releaseDate": "21-11-23",
+    "releaseURL": "https://github.com/thelounge/thelounge/releases/tag/v4.3.0",
+    "guideURL": "https://thelounge.chat/docs/install-and-upgrade",
+    "description": "An IRC client.",
+    "box": "red-box"
+  },
+  {
+    "name": "Bootstrap",
+    "releaseVersion": "4.6.1",
+    "releaseDate": "21-10-28",
+    "releaseURL": "https://github.com/twbs/bootstrap/releases/tag/v4.6.1",
+    "guideURL": "https://getbootstrap.com/docs/5.0/getting-started/download/",
+    "description": "A CSS framework.",
+    "box": "red-box"
+  },
+  {
+    "name": "Angular",
+    "releaseVersion": "13.0.2",
+    "releaseDate": "21-11-17",
+    "releaseURL": "https://github.com/angular/angular/releases/tag/13.0.2",
+    "guideURL": "https://angular.io/guide/setup-local",
+    "description": "A web application framework.",
+    "box": "red-box"
+  },
+  {
+    "name": "Atom",
+    "releaseVersion": "1.58.0",
+    "releaseDate": "21-07-27",
+    "releaseURL": "https://github.com/atom/atom/releases/tag/v1.58.0",
+    "guideURL": "https://flight-manual.atom.io/getting-started/sections/installing-atom/",
+    "description": "A text editor.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Django",
+    "releaseVersion": "3.2.9",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/django/django/releases/tag/3.2.9",
+    "guideURL": "https://docs.djangoproject.com/en/3.2/intro/install/",
+    "description": "A web framework.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Express",
+    "releaseVersion": "4.17.1",
+    "releaseDate": "19-05-26",
+    "releaseURL": "https://github.com/expressjs/express/releases/tag/4.17.1",
+    "guideURL": "https://expressjs.com/en/starter/installing.html",
+    "description": "A minimalist web framework for Node.js.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Docker Compose",
+    "releaseVersion": "2.1.1",
+    "releaseDate": "21-11-08",
+    "releaseURL": "https://github.com/docker/compose/releases/tag/v2.1.1",
+    "guideURL": "https://docs.docker.com/compose/install/",
+    "description": "A tool for running multiple Docker containers.",
+    "box": "green-box"
+  },
+  {
+    "name": "pfSense",
+    "releaseVersion": "2.5.2",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/pfsense/pfsense/releases/tag/v2.5.2",
+    "guideURL": "https://docs.netgate.com/pfsense/en/latest/install/download-installer-image.html",
+    "description": "A network firewall.",
+    "box": "blue-box"
+  },
+  {
+    "name": "OPNsense",
+    "releaseVersion": "21.7.6",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/opnsense/core/releases/tag/21.7.6",
+    "guideURL": "https://docs.opnsense.org/manual/install.html",
+    "description": "A network firewall.",
+    "box": "green-box"
+  },
+  {
+    "name": "SoundSwitch",
+    "releaseVersion": "6.2.3",
+    "releaseDate": "21-11-05",
+    "releaseURL": "https://github.com/belphemur/soundswitch/releases/tag/v6.2.3",
+    "guideURL": "guideurl",
+    "description": "A tool for easy switching between sound devices.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Wireshark",
+    "releaseVersion": "3.6.0",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/wireshark/wireshark/releases/tag/wireshark-3.6.0",
+    "guideURL": "https://www.wireshark.org/docs/wsug_html_chunked/ChapterBuildInstall.html",
+    "description": "A network analysis tool.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Home Assistant",
+    "releaseVersion": "2021.11.5",
+    "releaseDate": "21-11-19",
+    "releaseURL": "https://github.com/home-assistant/core/releases/tag/2021.11.5",
+    "guideURL": "https://www.home-assistant.io/installation/",
+    "description": "A home automation solution.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Guacamole",
+    "releaseVersion": "1.3.0",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/apache/guacamole-server/releases/tag/1.3.0",
+    "guideURL": "https://guacamole.apache.org/doc/1.3.0/gug/installing-guacamole.html",
+    "description": "A remote desktop solution.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Deluge",
+    "releaseVersion": "2.0.3",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/deluge-torrent/deluge/releases/tag/deluge-2.0.3",
+    "guideURL": "https://dev.deluge-torrent.org/wiki/Installing",
+    "description": "A BitTorrent client.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Calibre",
+    "releaseVersion": "5.32.0",
+    "releaseDate": "21-11-12",
+    "releaseURL": "https://github.com/kovidgoyal/calibre/releases/tag/v5.32.0",
+    "guideURL": "https://www.infofuge.com/install-calibre-ubuntu/",
+    "description": "An eBook manager.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Audacity",
+    "releaseVersion": "3.1.2",
+    "releaseDate": "21-11-16",
+    "releaseURL": "https://github.com/audacity/audacity/releases/tag/Audacity-3.1.2",
+    "guideURL": "https://manual.audacityteam.org/man/installing_and_updating_audacity_on_windows.html",
+    "description": "An audio editor.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Airsonic",
+    "releaseVersion": "10.6.2",
+    "releaseDate": "20-05-03",
+    "releaseURL": "https://github.com/airsonic/airsonic/releases/tag/v10.6.2",
+    "guideURL": "https://airsonic.github.io/docs/",
+    "description": "A media server.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Vaultwarden",
+    "releaseVersion": "1.23.0",
+    "releaseDate": "21-10-20",
+    "releaseURL": "https://github.com/dani-garcia/vaultwarden/releases/tag/1.23.0",
+    "guideURL": "https://github.com/dani-garcia/vaultwarden/wiki/Starting-a-Container",
+    "description": "An unofficial server compatible with Bitwarden.",
+    "box": "blue-box"
+  },
+  {
+    "name": "uBlock Origin",
+    "releaseVersion": "1.39.0",
+    "releaseDate": "21-11-22",
+    "releaseURL": "https://github.com/gorhill/uBlock/releases/tag/1.39.0",
+    "guideURL": "https://github.com/gorhill/uBlock#installation",
+    "description": "A general-purpose blocker.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Vim",
+    "releaseVersion": "8.2.3701",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/vim/vim/releases/tag/v8.2.3701",
+    "guideURL": "https://www.tutorialspoint.com/vim/vim_installation_and_configuration.htm",
+    "description": "A Unix text editor.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Rails",
+    "releaseVersion": "6.1.4.1",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/rails/rails/releases/tag/v6.1.4.1",
+    "guideURL": "https://guides.rubyonrails.org/v5.0/getting_started.html#installing-rails",
+    "description": "A web application framework.",
+    "box": "blue-box"
+  },
+  {
+    "name": "DBeaver",
+    "releaseVersion": "21.3.0",
+    "releaseDate": "21-11-28",
+    "releaseURL": "https://github.com/dbeaver/dbeaver/releases/tag/21.3.0",
+    "guideURL": "https://www.saplearners.com/how-to-install-dbeaver-community-edition/",
+    "description": "A database tool.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Phaser",
+    "releaseVersion": "3.55.2",
+    "releaseDate": "21-05-27",
+    "releaseURL": "https://github.com/photonstorm/phaser/releases/tag/v3.55.2",
+    "guideURL": "https://phaser.io/tutorials/getting-started-phaser3/part2",
+    "description": "A framework for HTML5 games.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Grafana",
+    "releaseVersion": "7.5.6",
+    "releaseDate": "21-05-11",
+    "releaseURL": "https://github.com/grafana/grafana/releases/tag/v7.5.6",
+    "guideURL": "https://grafana.com/docs/grafana/latest/installation/",
+    "description": "A tool for visualizing logs and metrics.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Jekyll",
+    "releaseVersion": "4.2.1",
+    "releaseDate": "21-09-27",
+    "releaseURL": "https://github.com/jekyll/jekyll/releases/tag/v4.2.1",
+    "guideURL": "https://jekyllrb.com/docs/installation/",
+    "description": "A static site generator.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Joomla!",
+    "releaseVersion": "4.0.4",
+    "releaseDate": "21-10-26",
+    "releaseURL": "https://github.com/joomla/joomla-cms/releases/tag/4.0.4",
+    "guideURL": "https://docs.joomla.org/Installing_Joomla",
+    "description": "A content management system.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Apache Tomcat",
+    "releaseVersion": "10.1.0",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/apache/tomcat/releases/tag/10.1.0-M7",
+    "guideURL": "https://tomcat.apache.org/tomcat-10.0-doc/setup.html",
+    "description": "A \"pure\" Java HTTP server.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Kiwi IRC",
+    "releaseVersion": "1.6.0",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/kiwiirc/kiwiirc/releases/tag/v1.6.0",
+    "guideURL": "https://github.com/kiwiirc/kiwiirc/wiki/Example-installation-guide",
+    "description": "A web based IRC client.",
+    "box": "blue-box"
+  },
+  {
+    "name": "Mumble",
+    "releaseVersion": "1.3.4",
+    "releaseDate": "21-02-10",
+    "releaseURL": "https://github.com/mumble-voip/mumble/releases/tag/1.3.4",
+    "guideURL": "guideurl",
+    "description": "description",
+    "box": "green-box"
+  }
+]
