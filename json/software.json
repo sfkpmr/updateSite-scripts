@@ -466,5 +466,14 @@
     "guideURL": "guideurl",
     "description": "A voice chat client and server.",
     "box": "green-box"
+  },
+  {
+    "name": "ownCloud",
+    "releaseVersion": "10.8.0",
+    "releaseDate": "-",
+    "releaseURL": "https://github.com/owncloud/core/releases/tag/v10.8.0",
+    "guideURL": "https://doc.owncloud.com/server/next/admin_manual/installation/",
+    "description": "A selfhosted cloud solution.",
+    "box": "blue-box"
   }
 ]
