@@ -51,26 +51,6 @@ cat $jsonFile |
                  )' > $tempFile && mv $tempFile $jsonFile
 }
 
-#checkMariaDb () {
-#
-#mariaAPI=$(curl https://downloads.mariadb.org/rest-api/mariadb/10.5/)
-#
-#if [ -z "$mariaAPI" ]
-#then
-#	echo "Empty Maria API return." >> $logFile
-#else
-#	releaseVersion=$(echo "$mariaAPI" | jq '.releases | .[] | .release_id' | sed -n '1p' | grep -E -o '[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}')
-#	releaseDate=$(echo "$mariaAPI" | jq '.releases | .[] | .date_of_release' | sed -n '1p' | grep -E -o '[0-9]{1,2}'-'[0-9]{1,2}'-'[0-9]{1,2}')
-#
-#	#tr to keep output on one line
-#	tempVersionName=$(echo "$releaseVersion" | grep -o [0-9] | tr -d '\n')
-#	releaseURL=https://mariadb.com/kb/en/mariadb-$tempVersionName-release-notes/
-#
-#	validateVersion ${releaseVersion} MariaDB ${releaseDate} ${releaseURL}
-#fi
-#
-#}
-
 validateVersion () {
 
 echo "ValidateVersion ${1} ${2} ${3} ${4}"
