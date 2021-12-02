@@ -236,6 +236,8 @@ while IFS=, read -r REPO NAME
 
 done < ${FILE}
 
+/bin/bash writeInfoSite.sh
+
 date=$(TZ=Europe/Stockholm date +'%y/%m/%d %T')
 
 echo "Update run ended at $date" >> $logFile

@@ -8,6 +8,7 @@ read -p "Repo path: " repo
 read -p "Releases or tags - r/t: " type
 read -p "Software install URL: " guideURL
 read -p "Software description: " description
+read -p "Download site: " downloadURL
 
 if [ "$type" != 'r' ] && [ "$type" != 't' ]
 then
@@ -25,7 +26,7 @@ else
 	boxColour=red-box
 fi
 
-jq --arg name "$name" --arg guideURL "$guideURL" --arg description "$description" --arg colour "$boxColour" '. += [{"name": $name, "releaseVersion": "-", "releaseDate": "-", "releaseURL": "-", "guideURL": $guideURL, "description": $description, "box": $colour}]' $json > $tempJson && mv $tempJson $json
+jq --arg name "$name" --arg guideURL "$guideURL" --arg description "$description" --arg colour "$boxColour" --arg downloadURL "$downloadURL" '. += [{"name": $name, "releaseVersion": "-", "releaseDate": "-", "releaseURL": "-", "guideURL": $guideURL, "description": $description, "box": $colour, "downloadURL": $downloadURL}]' $json > $tempJson && mv $tempJson $json
 
 if [ "$type" == 'r' ]; then
 	echo "$repo,$name" >> $releaseCsv
@@ -34,5 +35,3 @@ elif [ "$type" == 't' ]; then
 else
 	echo "Invalid type!"
 fi
-
-
