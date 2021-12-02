@@ -20,6 +20,7 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
 <html lang="en">
 
 <head>
+    <title>About $name</title>
     <link rel="stylesheet" type="text/css" href="../static/mobile.css" />
     <link rel="icon" href="../static/favicon.ico">
 </head>
@@ -30,26 +31,32 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
     <h5>$releaseVersion</h5>
 
     <div class="periodic-about">
-        <div class="periodic-element blue-box" onclick="location.href='$downloadURL';">
+        <div class="periodic-element blue-box">
+	    <a href="$downloadURL">
             <div class="periodic-element-about">
                 <div class="title">
                     Download
                 </div>
             </div>
+	    </a>
         </div>
-        <div class="periodic-element blue-box" onclick="location.href='$releaseURL';">
+        <div class="periodic-element blue-box">
+	    <a href="$releaseURL">
             <div class="periodic-element-about">
                 <div class="title">
                     Release information
                 </div>
             </div>
+            </a>
         </div>
-        <div class="periodic-element blue-box" onclick="location.href='$guideURL';">
+        <div class="periodic-element blue-box">
+            <a href="$guideURL">
             <div class="periodic-element-about">
                 <div class="title">
                     Installation guide
                 </div>
             </div>
+            </a>
         </div>
     </div>
 </body>
@@ -66,6 +73,7 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
 <html lang="en">
 
 <head>
+    <title>About $name</title>
     <link rel="stylesheet" type="text/css" href="../static/mobile.css" />
     <link rel="icon" href="../static/favicon.ico">
 </head>
@@ -76,19 +84,23 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
     <h5>$releaseVersion</h5>
 
     <div class="periodic-about">
-        <div class="periodic-element blue-box" onclick="location.href='$releaseURL';">
+        <div class="periodic-element blue-box">
+	    <a href="$releaseURL">
             <div class="periodic-element-about">
                 <div class="title">
                     Release information
                 </div>
             </div>
+            </a>
         </div>
-        <div class="periodic-element blue-box" onclick="location.href='$guideURL';">
+        <div class="periodic-element blue-box">
+            <a href="$guideURL">
             <div class="periodic-element-about">
                 <div class="title">
                     Installation guide
                 </div>
             </div>
+            </a>
         </div>
     </div>
 </body>
