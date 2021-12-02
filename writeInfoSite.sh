@@ -23,6 +23,8 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
     <title>About $name</title>
     <link rel="stylesheet" type="text/css" href="../static/mobile.css" />
     <link rel="icon" href="../static/favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -76,6 +78,8 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
     <title>About $name</title>
     <link rel="stylesheet" type="text/css" href="../static/mobile.css" />
     <link rel="icon" href="../static/favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
