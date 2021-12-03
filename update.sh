@@ -221,7 +221,7 @@ while IFS=, read -r REPO NAME
 
 done < ${FILE}
 
-#( "/srv/writeInfoSite.sh" )
+( "/srv/writeInfoSite.sh" )
 
 date=$(TZ=Europe/Stockholm date +'%y/%m/%d %T')
 
