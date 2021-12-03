@@ -63,7 +63,7 @@ if [ ! -f "$fileCheck" ]; then
 	echo 0 > ${fileCheck}
 fi
 
-date=$(TZ=Europe/Stockholm date +'%D %R:%S')
+date=$(TZ=Europe/Stockholm date +'%y/%m/%d %T')
 read currentVersion < $fileCheck
 echo "Current version $currentVersion"
 echo "Checking version ${1}"
@@ -72,48 +72,53 @@ echo ${1}
 IFS="." read ver1 ver2 ver3 ver4 <<< "$currentVersion"
 IFS="." read ver5 ver6 ver7 ver8 <<< "${1}"
 
-ver1=$(echo "${ver1#"${ver1%%[!0]*}"}")
-ver2=$(echo "${ver2#"${ver2%%[!0]*}"}")
-ver3=$(echo "${ver3#"${ver3%%[!0]*}"}")
-ver4=$(echo "${ver4#"${ver4%%[!0]*}"}")
-ver5=$(echo "${ver5#"${ver5%%[!0]*}"}")
-ver6=$(echo "${ver6#"${ver6%%[!0]*}"}")
-ver7=$(echo "${ver7#"${ver7%%[!0]*}"}")
-ver8=$(echo "${ver8#"${ver8%%[!0]*}"}")
+#ver1=$(echo "${ver1#"${ver1%%[!0]*}"}")
+#ver2=$(echo "${ver2#"${ver2%%[!0]*}"}")
+#ver3=$(echo "${ver3#"${ver3%%[!0]*}"}")
+#ver4=$(echo "${ver4#"${ver4%%[!0]*}"}")
+#ver5=$(echo "${ver5#"${ver5%%[!0]*}"}")
+#ver6=$(echo "${ver6#"${ver6%%[!0]*}"}")
+#ver7=$(echo "${ver7#"${ver7%%[!0]*}"}")
+#ver8=$(echo "${ver8#"${ver8%%[!0]*}"}")
 
 counter=$(echo ${1} | grep -o '\.' | wc -l)
 
 echo "ADAMPETER $ver1 $ver2 $ver3 $ver4 $ver5 $ver6 $ver7 $ver8" 
 
-if [ "$currentVersion" = "${1}" ]; then
-	echo "$date ${2} is already on version ${1}" >> $logFile
-elif [ "$ver5" > "$ver1" ]; then
-		updateList "${2}" ${1} ${3} ${4}
-                echo "${1}" > "$fileCheck"
-                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logFile
-elif [ "$counter" == 1 ]; then
-        if [[ "$ver5" -ge "$ver1" && "$ver6" -ge "$ver2" ]]; then
-                #file names to lowercase
-                updateList "${2}" ${1} ${3} ${4}
-                echo "${1}" > "$fileCheck"
-                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logFile
-        fi
-elif [ "$counter" == 2 ]; then
-	if [[ "$ver5" -ge "$ver1" && "$ver6" -ge "$ver2" && "$ver7" -ge "$ver3" ]]; then
-                #file names to lowercase
-                updateList "${2}" ${1} ${3} ${4}
-                echo "${1}" > "$fileCheck"
-                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logFile
+if [[ "${1}" != "$currentVersion" ]]; then
+	if [[ "$ver1" -lt "$ver5" ]]; then
+		updateList "${2}" "${1}" "${3}" "${4}"
+		echo "${1}" > "$fileCheck"
+		echo "$date ${2} was updated to ${1} from $currentVersion" >> "$logFile"
+	elif [[ "$ver1" -eq "$ver5" ]]; then
+		if [[ "$ver2" -lt "$ver6" ]]; then
+			updateList "${2}" "${1}" "${3}" "${4}"
+			echo "${1}" > "$fileCheck"
+			echo "$date ${2} was updated to ${1} from $currentVersion" >> "$logFile"
+		elif [[ "$ver2" -eq "$ver6" ]]; then
+			if [[ "$ver3" -lt "$ver7" ]]; then
+				updateList "${2}" "${1}" "${3}" "${4}"
+				echo "${1}" > "$fileCheck"
+				echo "$date ${2} was updated to ${1} from $currentVersion" >> "$logFile"
+			elif [[ "$ver3" -eq "$ver7" ]]; then
+				if [[ "$ver4" -lt "$ver8" ]]; then
+					updateList "${2}" "${1}" "${3}" "${4}"
+					echo "${1}" > "$fileCheck"
+					echo "$date ${2} was updated to ${1} from $currentVersion" >> "$logFile"
+				else 
+					echo "$date ${2} was not updated. (${1} is lower than $currentVersion)" >> "$logFile"
+				fi
+			else
+				echo "$date ${2} was not updated. (${1} is lower than $currentVersion)" >> "$logFile"
+			fi
+		else
+			echo "$date ${2} was not updated. (${1} is lower than $currentVersion)" >> "$logFile"
+		fi
+	else
+		echo "$date ${2} was not updated. (${1} is lower than $currentVersion)" >> "$logFile"
 	fi
-elif [ "$counter" == 3 ]; then
-	if [[ "$ver5" -ge "$ver1" && "$ver6" -ge "$ver2" && "$ver7" -ge "$ver3" && "$ver8" -ge "$ver4" ]]; then
-                #file names to lowercase
-                updateList "${2}" ${1} ${3} ${4}
-                echo "${1}" > "$fileCheck"
-                echo "$date ${2} was updated to ${1} from $currentVersion" >> $logFile
-	fi
-else
-	echo "$date ${2} was not updated from $currentVersion to ${1}" >> $logFile
+elif [[ "${1}" == "$currentVersion" ]]; then
+	 echo "$date ${2} is already on version ${1}" >> "$logFile"
 fi
 
 }
@@ -216,7 +221,7 @@ while IFS=, read -r REPO NAME
 
 done < ${FILE}
 
-/bin/bash writeInfoSite.sh
+#( "/srv/writeInfoSite.sh" )
 
 date=$(TZ=Europe/Stockholm date +'%y/%m/%d %T')
 
