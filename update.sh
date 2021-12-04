@@ -160,7 +160,7 @@ while IFS=, read -r REPO NAME
                         #-P flag?
                         releaseDate=$(echo "$tag" | grep -o -P '(?<=published_at": ").*(?=",)' | grep -Eo '[0-9]{1,2}'-'[0-9]{1,2}'-'[0-9]{1,2}')
                 else
-                        releaseDate="-"
+                        releaseDate=$(TZ=Europe/Stockholm date +'%y-%m-%d')
                 fi
 
                         validateVersion ${version} "${NAME}" ${releaseDate} ${releaseURL}
