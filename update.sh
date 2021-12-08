@@ -140,17 +140,20 @@ while IFS=, read -r REPO NAME
                 echo "API OK";
                 #Discarding releases with alpha or rc in the name
                 #echo "Repo: $repo"
-                #releaseName=$(echo "$repo" | grep -o -P '(?<=name": ").*(?=",)' | grep -E '[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}' | grep -i -v -E 'alpha|rc|dev|candidate|beta' | sed -n '1p')
-		releaseName=$(echo "$repo" | grep -o -P '(?<=name": ").*(?=",)' | grep -E '[0-9]{1,3}'\\.'[0-9]{1,3}'\|'[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}' | grep -i -v -E 'alpha|rc|dev|candidate|beta' | sed -n '1p')
-		echo "releaseName: $releaseName"
+		#releaseName=$(echo "$repo" | grep -o -P '(?<=name": ").*(?=",)' | grep -E '[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}' | grep -i -v -E 'alpha|rc|dev|candidate|beta' | sed -n '1p')
+                releaseName=$(echo "$repo" | grep -o -P '(?<=name": ").*(?=",)' | grep -E '[0-9]{1,3}'\\.'[0-9]{1,3}'\|'[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}' | grep -i -v -E 'alpha|rc|dev|candidate|beta' | sed -n '1p')
+                echo "releaseName: $releaseName"
 
                 counter=$(echo "$releaseName" | grep -o '\.' | wc -l)
-                if [ "$counter" == 2 ]
-                then
+		if [ "$counter" == 1 ]; then
+                        version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[[:alnum:]]{1,6}')
+                elif [ "$counter" == 2 ]; then
                         version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[0-9]{1,3}'\\.'[[:alnum:]]{1,6}')
-                else
-                        version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[[:alnum:]]{1,6}')
-                fi
+                elif [ "$counter" == 3 ]; then
+			version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[[:alnum:]]{1,6}')
+		else
+			echo "Bad version name $releaseName" >> "$logFile"
+		fi
 
                 tag=$(curl -u ${user}:${token} -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${REPO}/releases/tags/${releaseName})
                 releaseURL="https://github.com/${REPO}/releases/tag/${releaseName}"
@@ -161,7 +164,8 @@ while IFS=, read -r REPO NAME
                         #-P flag?
                         releaseDate=$(echo "$tag" | grep -o -P '(?<=published_at": ").*(?=",)' | grep -Eo '[0-9]{1,2}'-'[0-9]{1,2}'-'[0-9]{1,2}')
                 else
-                        releaseDate=$(TZ=Europe/Stockholm date +'%y-%m-%d')
+			#releaseDate="-"
+			releaseDate=$(TZ=Europe/Stockholm date +'%y-%m-%d')
                 fi
 
                         validateVersion ${version} "${NAME}" ${releaseDate} ${releaseURL}
