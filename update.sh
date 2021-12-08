@@ -140,8 +140,9 @@ while IFS=, read -r REPO NAME
                 echo "API OK";
                 #Discarding releases with alpha or rc in the name
                 #echo "Repo: $repo"
-                releaseName=$(echo "$repo" | grep -o -P '(?<=name": ").*(?=",)' | grep -E '[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}' | grep -i -v -E 'alpha|rc|dev|candidate|beta' | sed -n '1p')
-                echo "releaseName: $releaseName"
+                #releaseName=$(echo "$repo" | grep -o -P '(?<=name": ").*(?=",)' | grep -E '[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}' | grep -i -v -E 'alpha|rc|dev|candidate|beta' | sed -n '1p')
+		releaseName=$(echo "$repo" | grep -o -P '(?<=name": ").*(?=",)' | grep -E '[0-9]{1,3}'\\.'[0-9]{1,3}'\|'[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}' | grep -i -v -E 'alpha|rc|dev|candidate|beta' | sed -n '1p')
+		echo "releaseName: $releaseName"
 
                 counter=$(echo "$releaseName" | grep -o '\.' | wc -l)
                 if [ "$counter" == 2 ]
