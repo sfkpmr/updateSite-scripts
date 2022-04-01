@@ -1,7 +1,7 @@
 #!/bin/bash
 
 user=sfkpmr
-token=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
+token=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
 rootPath=/srv
 publicPath=${rootPath}/software
 jsonFile=${rootPath}/json/software.json
