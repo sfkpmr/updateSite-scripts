@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Exit immediately if a pipeline returns a non-zero status - https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
+set -e
+
 user=sfkpmr
 token=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
 rootPath=/srv
