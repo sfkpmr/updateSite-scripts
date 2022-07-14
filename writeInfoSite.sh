@@ -1,6 +1,6 @@
 #!/bin/bash
 
-json=json/software.json
+json=../test/json/software.json
 
 jq -c '.[]' $json | while read i; do
 	# do stuff with $i
