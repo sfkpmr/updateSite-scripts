@@ -1,1 +1,35 @@
-redis/redis,redis
+pi-hole/pi-hole,Pi-hole
+jellyfin/jellyfin,Jellyfin
+portainer/portainer,Portainer
+traefik/traefik,Traefik
+caddyserver/caddy,Caddy
+nodejs/node,Node.js
+rust-lang/rust,Rust
+moby/moby,Moby
+julialang/julia,Julia
+nextcloud/server,Nextcloud
+homebrew/brew,Homebrew
+bastienwirtz/homer,Homer
+tryghost/ghost,Ghost
+tensorflow/tensorflow,TensorFlow
+scala/scala,Scala
+thelounge/thelounge,"The Lounge"
+twbs/bootstrap,Bootstrap
+angular/angular,Angular
+atom/atom,Atom
+expressjs/express,Express
+redis/redis,Redis
+docker/compose,"Docker Compose"
+belphemur/soundswitch,SoundSwitch
+home-assistant/core,"Home Assistant"
+kovidgoyal/calibre,Calibre
+audacity/audacity,Audacity
+airsonic/airsonic,Airsonic
+dani-garcia/vaultwarden,Vaultwarden
+gorhill/uBlock,"uBlock Origin"
+dbeaver/dbeaver,DBeaver
+photonstorm/phaser,Phaser
+grafana/grafana,Grafana
+joomla/joomla-cms,Joomla!
+jekyll/jekyll,Jekyll
+mumble-voip/mumble,Mumble

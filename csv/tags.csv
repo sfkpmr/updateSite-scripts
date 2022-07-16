@@ -1,7 +1,13 @@
-pihole/pihole,pi-hole
-asgf,golf
-asgd,golf
-gsad,golf
-gdsa,golf
-asgd,apa
-sagd,apa
+nginx/nginx,nginx
+qbittorrent/qbittorrent,qBittorrent
+openvpn/openvpn,OpenVPN
+perl/perl5,Perl
+git/git,Git
+opnsense/core,OPNsense
+wireshark/wireshark,Wireshark
+apache/guacamole-server,Guacamole
+deluge-torrent/deluge,Deluge
+vim/vim,Vim
+rails/rails,Rails
+apache/tomcat,"Apache Tomcat"
+kiwiirc/kiwiirc,"Kiwi IRC"

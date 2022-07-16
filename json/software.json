@@ -1,32 +1,434 @@
 [
   {
-    "name": "redis",
-    "release_version": "-",
-    "release_date": "-",
-    "release_url": "-",
-    "guide_url": "domain.com",
-    "description": "desc",
-    "box": "green-box",
-    "download_url": "domain2.com"
-  },
-  {
-    "name": "golf",
-    "release_version": "-",
-    "release_date": "-",
-    "release_url": "-",
-    "guide_url": "asdg",
-    "description": "asgd",
-    "box": "green-box",
-    "download_url": "sadg"
-  },
-  {
-    "name": "apa",
-    "release_version": "-",
-    "release_date": "-",
-    "release_url": "-",
-    "guide_url": "agsd",
-    "description": "agsd",
+    "name": "Redis",
+    "release_date": "22-07-11",
+    "release_version": "7.0.3",
+    "release_url": "https://github.com/redis/redis/releases/tag/7.0.3",
+    "description": "An in-memory database.",
     "box": "red-box",
-    "download_url": "asdg"
+    "download_url": "https://redis.io/download"
+  },
+  {
+    "name": "Pi-hole",
+    "release_date": "22-07-10",
+    "release_version": "5.11.4",
+    "release_url": "https://github.com/pi-hole/pi-hole/releases/tag/v5.11.4",
+    "description": "An adblocker for your network.",
+    "box": "green-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Jellyfin",
+    "release_date": "22-06-27",
+    "release_version": "10.8.1",
+    "release_url": "https://github.com/jellyfin/jellyfin/releases/tag/v10.8.1",
+    "description": "An open source media server.",
+    "box": "blue-box",
+    "download_url": "https://jellyfin.org/downloads/"
+  },
+  {
+    "name": "nginx",
+    "release_date": "22-07-16",
+    "release_version": "1.23.0",
+    "release_url": "https://github.com/nginx/nginx/releases/tag/release-1.23.0",
+    "description": "Web server, reverse proxy and load balancer all-in-one.",
+    "box": "blue-box",
+    "download_url": "https://nginx.org/en/download.html"
+  },
+  {
+    "name": "qBittorrent",
+    "release_date": "22-07-16",
+    "release_version": "4.4.3.1",
+    "release_url": "https://github.com/qbittorrent/qbittorrent/releases/tag/release-4.4.3.1",
+    "description": "A BitTorrent client.",
+    "box": "green-box",
+    "download_url": "https://www.qbittorrent.org/download.php"
+  },
+  {
+    "name": "Portainer",
+    "release_date": "22-07-12",
+    "release_version": "2.14.1",
+    "release_url": "https://github.com/portainer/portainer/releases/tag/2.14.1",
+    "description": "A web interface for Docker.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Traefik",
+    "release_date": "22-07-11",
+    "release_version": "2.8.1",
+    "release_url": "https://github.com/traefik/traefik/releases/tag/v2.8.1",
+    "description": "A reverse proxy and load balancer.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Caddy",
+    "release_date": "22-07-12",
+    "release_version": "2.5.2",
+    "release_url": "https://github.com/caddyserver/caddy/releases/tag/v2.5.2",
+    "description": "A reverse proxy written in Go.",
+    "box": "blue-box",
+    "download_url": "https://caddyserver.com/download"
+  },
+  {
+    "name": "Node.js",
+    "release_date": "22-07-13",
+    "release_version": "18.6.0",
+    "release_url": "https://github.com/nodejs/node/releases/tag/v18.6.0",
+    "description": "A JavaScript runtime.",
+    "box": "blue-box",
+    "download_url": "https://nodejs.org/en/download/"
+  },
+  {
+    "name": "OpenVPN",
+    "release_date": "22-07-16",
+    "release_version": "2.5.7",
+    "release_url": "https://github.com/openvpn/openvpn/releases/tag/v2.5.7",
+    "description": "A VPN solution.",
+    "box": "blue-box",
+    "download_url": "https://openvpn.net/community-downloads/"
+  },
+  {
+    "name": "Rust",
+    "release_date": "22-06-30",
+    "release_version": "1.62.0",
+    "release_url": "https://github.com/rust-lang/rust/releases/tag/1.62.0",
+    "description": "The Rust programming language.",
+    "box": "red-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Moby",
+    "release_date": "22-06-07",
+    "release_version": "20.10.17",
+    "release_url": "https://github.com/moby/moby/releases/tag/v20.10.17",
+    "description": "The Moby Project.",
+    "box": "red-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Julia",
+    "release_date": "22-05-25",
+    "release_version": "1.7.3",
+    "release_url": "https://github.com/JuliaLang/julia/releases/tag/v1.7.3",
+    "description": "The Julia programming language.",
+    "box": "red-box",
+    "download_url": "https://julialang.org/downloads/"
+  },
+  {
+    "name": "Nextcloud",
+    "release_date": "22-06-20",
+    "release_version": "24.0.2",
+    "release_url": "https://github.com/nextcloud/server/releases/tag/v24.0.2",
+    "description": "A solution for hosting your own cloud.",
+    "box": "green-box",
+    "download_url": "https://nextcloud.com/install/"
+  },
+  {
+    "name": "Homebrew",
+    "release_date": "22-07-05",
+    "release_version": "3.5.4",
+    "release_url": "https://github.com/Homebrew/brew/releases/tag/3.5.4",
+    "description": "A package manager for MacOS and Linux.",
+    "box": "green-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Homer",
+    "release_date": "22-07-15",
+    "release_version": "22.07.2",
+    "release_url": "https://github.com/bastienwirtz/homer/releases/tag/v22.07.2",
+    "description": "A homepage for your server.",
+    "box": "green-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Ghost",
+    "release_date": "22-07-15",
+    "release_version": "5.4.0",
+    "release_url": "https://github.com/TryGhost/Ghost/releases/tag/v5.4.0",
+    "description": "A headless CMS.",
+    "box": "green-box",
+    "download_url": "-"
+  },
+  {
+    "name": "TensorFlow",
+    "release_date": "22-05-23",
+    "release_version": "2.9.1",
+    "release_url": "https://github.com/tensorflow/tensorflow/releases/tag/v2.9.1",
+    "description": "A machine learning platform.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Perl",
+    "release_date": "22-07-16",
+    "release_version": "5.37.1",
+    "release_url": "https://github.com/perl/perl5/releases/tag/v5.37.1",
+    "description": "The Perl programming language.",
+    "box": "green-box",
+    "download_url": "https://www.perl.org/get.html"
+  },
+  {
+    "name": "Scala",
+    "release_date": "22-06-10",
+    "release_version": "2.12.16",
+    "release_url": "https://github.com/scala/scala/releases/tag/v2.12.16",
+    "description": "The Scala programming language.",
+    "box": "green-box",
+    "download_url": "https://www.scala-lang.org/download/"
+  },
+  {
+    "name": "Git",
+    "release_date": "22-07-16",
+    "release_version": "2.37.1",
+    "release_url": "https://github.com/git/git/releases/tag/v2.37.1",
+    "description": "A version control and collaboration system for software development.",
+    "box": "blue-box",
+    "download_url": "https://git-scm.com/downloads"
+  },
+  {
+    "name": "The Lounge",
+    "release_date": "0",
+    "release_version": "0",
+    "release_url": "0",
+    "description": "An IRC client.",
+    "box": "red-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Bootstrap",
+    "release_date": "21-10-28",
+    "release_version": "4.6.1",
+    "release_url": "https://github.com/twbs/bootstrap/releases/tag/v4.6.1",
+    "description": "A CSS framework.",
+    "box": "red-box",
+    "download_url": "https://getbootstrap.com/docs/4.0/getting-started/download/"
+  },
+  {
+    "name": "Angular",
+    "release_date": "22-07-13",
+    "release_version": "14.0.6",
+    "release_url": "https://github.com/angular/angular/releases/tag/14.0.6",
+    "description": "A web application framework.",
+    "box": "red-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Atom",
+    "release_date": "22-03-08",
+    "release_version": "1.60.0",
+    "release_url": "https://github.com/atom/atom/releases/tag/v1.60.0",
+    "description": "A text editor.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Express",
+    "release_date": "22-04-29",
+    "release_version": "4.18.1",
+    "release_url": "https://github.com/expressjs/express/releases/tag/4.18.1",
+    "description": "A minimalist web framework for Node.js.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Docker Compose",
+    "release_date": "0",
+    "release_version": "0",
+    "release_url": "0",
+    "description": "A tool for running multiple Docker containers.",
+    "box": "green-box",
+    "download_url": "-"
+  },
+  {
+    "name": "OPNsense",
+    "release_date": "22-07-16",
+    "release_version": "22.7",
+    "release_url": "https://github.com/opnsense/core/releases/tag/22.7.r",
+    "description": "A network firewall.",
+    "box": "green-box",
+    "download_url": "https://opnsense.org/download/"
+  },
+  {
+    "name": "SoundSwitch",
+    "release_date": "22-06-26",
+    "release_version": "6.3.0",
+    "release_url": "https://github.com/Belphemur/SoundSwitch/releases/tag/v6.3.0",
+    "description": "A tool for easy switching between audio devices.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Wireshark",
+    "release_date": "22-07-16",
+    "release_version": "3.6.6",
+    "release_url": "https://github.com/wireshark/wireshark/releases/tag/wireshark-3.6.6",
+    "description": "A network analysis tool.",
+    "box": "blue-box",
+    "download_url": "https://www.wireshark.org/download.html"
+  },
+  {
+    "name": "Home Assistant",
+    "release_date": "0",
+    "release_version": "0",
+    "release_url": "0",
+    "description": "A home automation solution.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Guacamole",
+    "release_date": "22-07-16",
+    "release_version": "1.4.0",
+    "release_url": "https://github.com/apache/guacamole-server/releases/tag/1.4.0",
+    "description": "A remote desktop solution.",
+    "box": "blue-box",
+    "download_url": "https://guacamole.apache.org/releases/"
+  },
+  {
+    "name": "Deluge",
+    "release_date": "0",
+    "release_version": "0",
+    "release_url": "0",
+    "description": "A BitTorrent client.",
+    "box": "blue-box",
+    "download_url": "https://dev.deluge-torrent.org/wiki/Download"
+  },
+  {
+    "name": "Calibre",
+    "release_date": "22-07-16",
+    "release_version": "6.1.0",
+    "release_url": "https://github.com/kovidgoyal/calibre/releases/tag/v6.1.0",
+    "description": "An eBook manager.",
+    "box": "blue-box",
+    "download_url": "https://calibre-ebook.com/download"
+  },
+  {
+    "name": "Audacity",
+    "release_date": "21-12-23",
+    "release_version": "3.1.3",
+    "release_url": "https://github.com/audacity/audacity/releases/tag/Audacity-3.1.3",
+    "description": "An audio editor.",
+    "box": "blue-box",
+    "download_url": "https://www.audacityteam.org/download/"
+  },
+  {
+    "name": "Airsonic",
+    "release_date": "20-05-03",
+    "release_version": "10.6.2",
+    "release_url": "https://github.com/airsonic/airsonic/releases/tag/v10.6.2",
+    "description": "A media server.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Vaultwarden",
+    "release_date": "22-05-23",
+    "release_version": "1.25.0",
+    "release_url": "https://github.com/dani-garcia/vaultwarden/releases/tag/1.25.0",
+    "description": "An unofficial server compatible with Bitwarden.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "uBlock Origin",
+    "release_date": "0",
+    "release_version": "0",
+    "release_url": "0",
+    "description": "A general-purpose blocker.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Vim",
+    "release_date": "22-07-16",
+    "release_version": "9.0.0054",
+    "release_url": "https://github.com/vim/vim/releases/tag/v9.0.0054",
+    "description": "A Unix text editor.",
+    "box": "blue-box",
+    "download_url": "https://www.vim.org/download.php"
+  },
+  {
+    "name": "Rails",
+    "release_date": "22-07-16",
+    "release_version": "7.0.3.1",
+    "release_url": "https://github.com/rails/rails/releases/tag/v7.0.3.1",
+    "description": "A web application framework.",
+    "box": "blue-box",
+    "download_url": "https://rails.github.io/download/"
+  },
+  {
+    "name": "DBeaver",
+    "release_date": "22-07-10",
+    "release_version": "22.1.2",
+    "release_url": "https://github.com/dbeaver/dbeaver/releases/tag/22.1.2",
+    "description": "A database tool.",
+    "box": "blue-box",
+    "download_url": "https://dbeaver.com/download/"
+  },
+  {
+    "name": "Phaser",
+    "release_date": "21-05-27",
+    "release_version": "3.55.2",
+    "release_url": "https://github.com/photonstorm/phaser/releases/tag/v3.55.2",
+    "description": "A framework for HTML5 games.",
+    "box": "blue-box",
+    "download_url": "https://www.phaser.io/download"
+  },
+  {
+    "name": "Grafana",
+    "release_date": "22-07-14",
+    "release_version": "9.0.3",
+    "release_url": "https://github.com/grafana/grafana/releases/tag/v9.0.3",
+    "description": "A tool for visualizing logs and metrics.",
+    "box": "blue-box",
+    "download_url": "https://grafana.com/grafana/download"
+  },
+  {
+    "name": "Jekyll",
+    "release_date": "22-03-28",
+    "release_version": "3.9.2",
+    "release_url": "https://github.com/jekyll/jekyll/releases/tag/v3.9.2",
+    "description": "A static site generator.",
+    "box": "blue-box",
+    "download_url": "-"
+  },
+  {
+    "name": "Joomla!",
+    "release_date": "22-06-21",
+    "release_version": "4.1.5",
+    "release_url": "https://github.com/joomla/joomla-cms/releases/tag/4.1.5",
+    "description": "A content management system.",
+    "box": "blue-box",
+    "download_url": "https://downloads.joomla.org/"
+  },
+  {
+    "name": "Apache Tomcat",
+    "release_date": "0",
+    "release_version": "0",
+    "release_url": "0",
+    "description": "A 'pure' Java HTTP server.",
+    "box": "blue-box",
+    "download_url": "https://tomcat.apache.org/download-10.cgi"
+  },
+  {
+    "name": "Kiwi IRC",
+    "release_date": "0",
+    "release_version": "0",
+    "release_url": "0",
+    "description": "A web based IRC client.",
+    "box": "blue-box",
+    "download_url": "https://kiwiirc.com/downloads"
+  },
+  {
+    "name": "Mumble",
+    "release_date": "22-01-17",
+    "release_version": "1.4.230",
+    "release_url": "https://github.com/mumble-voip/mumble/releases/tag/v1.4.230",
+    "description": "A voice chat client and server.",
+    "box": "blue-box",
+    "download_url": "https://www.mumble.info/downloads/"
   }
 ]
