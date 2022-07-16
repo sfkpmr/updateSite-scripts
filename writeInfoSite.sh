@@ -1,26 +1,30 @@
 #!/bin/bash
 
-json=../test/json/software.json
+JSON=json/software.json
 
-jq -c '.[]' $json | while read i; do
+if [[ ! -d about/ ]]; then
+    mkdir about
+fi
+
+jq -c '.[]' $JSON | while read i; do
 	# do stuff with $i
-	name=$(jq -r '.name' <<< "$i")
-	releaseVersion=$(jq -r '.releaseVersion' <<< "$i")
-	releaseURL=$(jq -r '.releaseURL' <<< "$i")
-	guideURL=$(jq -r '.guideURL' <<< "$i")
-	downloadURL=$(jq -r '.downloadURL' <<< "$i")
+	NAME=$(jq -r '.name' <<< "$i")
+	RELEASEVERSION=$(jq -r '.release_version' <<< "$i")
+	RELEASEURL=$(jq -r '.release_url' <<< "$i")
+	GUIDEURL=$(jq -r '.guide_url' <<< "$i")
+	DOWNLOADURL=$(jq -r '.download_url' <<< "$i")
 
-touch about/"${name//[[:blank:]]/}".html
+touch about/"${NAME//[[:blank:]]/}".html
 
-if [ $downloadURL != "-" ]; then
+if [ $DOWNLOADURL != "-" ]; then
 
-cat > about/"${name//[[:blank:]]/}".html << EOF
+cat > about/"${NAME//[[:blank:]]/}".html << EOF
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>About $name</title>
+    <title>About $NAME</title>
     <link rel="stylesheet" type="text/css" href="../static/mobile.css" />
     <link rel="icon" href="../static/favicon.ico">
     <meta charset="utf-8">
@@ -28,13 +32,13 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
 </head>
 
 <body>
-    <h1>$name</h1>
+    <h1>$NAME</h1>
     <br>
-    <h5>$releaseVersion</h5>
+    <h5>$RELEASEVERSION</h5>
 
     <div class="periodic-about">
         <div class="periodic-element blue-box">
-	    <a href="$downloadURL">
+	    <a href="$DOWNLOADURL">
             <div class="periodic-element-about">
                 <div class="title">
                     Download
@@ -43,7 +47,7 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
 	    </a>
         </div>
         <div class="periodic-element blue-box">
-	    <a href="$releaseURL">
+	    <a href="$RELEASEURL">
             <div class="periodic-element-about">
                 <div class="title">
                     Release information
@@ -52,7 +56,7 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
             </a>
         </div>
         <div class="periodic-element blue-box">
-            <a href="$guideURL">
+            <a href="$GUIDEURL">
             <div class="periodic-element-about">
                 <div class="title">
                     Installation guide
@@ -69,13 +73,13 @@ EOF
 
 else
 
-cat > about/"${name//[[:blank:]]/}".html << EOF
+cat > about/"${NAME//[[:blank:]]/}".html << EOF
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>About $name</title>
+    <title>About $NAME</title>
     <link rel="stylesheet" type="text/css" href="../static/mobile.css" />
     <link rel="icon" href="../static/favicon.ico">
     <meta charset="utf-8">
@@ -83,13 +87,13 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
 </head>
 
 <body>
-    <h1>$name</h1>
+    <h1>$NAME</h1>
     <br>
-    <h5>$releaseVersion</h5>
+    <h5>$RELEASEVERSION</h5>
 
     <div class="periodic-about">
         <div class="periodic-element blue-box">
-	    <a href="$releaseURL">
+	    <a href="$RELEASEURL">
             <div class="periodic-element-about">
                 <div class="title">
                     Release information
@@ -98,7 +102,7 @@ cat > about/"${name//[[:blank:]]/}".html << EOF
             </a>
         </div>
         <div class="periodic-element blue-box">
-            <a href="$guideURL">
+            <a href="$GUIDEURL">
             <div class="periodic-element-about">
                 <div class="title">
                     Installation guide
