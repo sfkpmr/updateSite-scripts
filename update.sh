@@ -4,8 +4,7 @@
 set -e
 
 USER=sfkpmr
-TOKEN=$(<../test/github_token) #gör ny TOKEN 
-rootPath=../test
+TOKEN=$(</home/marcus/Documents/.github_token) #gör ny TOKEN   
 SOFTWAREJSON=json/software.json
 tempFile=json/tempjson.json
 RELEASESLIST=csv/releases.csv
@@ -35,7 +34,7 @@ versionFilter() {
 
         #Filter out unstable releases
         #-z returns true if the string is null
-        if [[ -z $(echo ${1} | grep -i -E 'alpha|rc|dev|candidate|beta|a|b|r') ]]; then
+        if [[ -z $(echo ${1} | grep -i -E 'alpha|rc|dev|candidate|beta') ]]; then
                 echo $(echo ${1} | grep -P -i -o '([0-9]+(\.[0-9]+)+)')
         else
                 echo -1
@@ -48,7 +47,7 @@ checkReleases() {
                 REPODATA=$(curl -u ${USER}:${TOKEN} -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${REPO}/releases/latest)
 
                 if [[ $( echo $REPODATA | jq -r .message ) == "Not Found" ]]; then
-                        writeLog ${NAME} "-" "-" "curl error!" 
+                        writeLog "${NAME}" "-" "-" "curl error!" 
                 else
                         #REGEX generator https://regex-generator.olafneumann.org/
                         RELEASEVERSION=$(echo "$REPODATA" | jq -r .tag_name ) 
@@ -67,7 +66,7 @@ checkTags() {
                 REPODATA=$(curl -u ${USER}:${TOKEN} -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${REPO}/tags?per_page=100) 
 
                 if [[ $( echo $REPODATA | grep 'Not Found' ) ]]; then
-                        writeLog ${NAME} "-" "-" "curl error!"
+                        writeLog "${NAME}" "-" "-" "curl error!"
                 else
                         TAGNAME=$(echo $REPODATA | jq -r '.[0].name' )
                         #Use &&s?
@@ -82,26 +81,27 @@ updateList() {
 
         VERSION=$(versionFilter ${2})
         echo "DETTA KOM TILLBAKA $VERSION"
-       
-        #Vilka releases är ok egentligen? opnsense r a whatever releases?
+
         #Flytta kiwiirc till releases?
         
         if [[ "$VERSION" != -1 ]] ; then
 
                 CURRENTVERSION=$(jq -r --arg name "${1}" '.[] | select(.name == $name).release_version' $SOFTWAREJSON)
+                #echo $( cat $SOFTWAREJSON | jq -r --arg name "${1}" '.[] | select(.name == $name).release_version' )
+                #echo "Current version is $CURRENTVERSION for ${1}"
 
                 if [[ $(versionCheck $CURRENTVERSION $VERSION) -eq 1 ]]; then
                         cat $SOFTWAREJSON |
-                        jq --arg name "${1}" --arg version "$VERSION" --arg releaseDate "${3}" --arg releaseURL ${4} 'map(if .name == $name
+                        jq --arg name "${1}" --arg version "$VERSION" --arg releaseDate "${3}" --arg releaseURL "${4}" 'map(if .name == $name
                         then . + {"release_date": $releaseDate, "release_version": $version, "release_url": $releaseURL}
                         else .
                         end
-                        )' > $tempFile && mv $tempFile $SOFTWAREJSON && writeLog ${1} $VERSION $CURRENTVERSION "Updated!" 
+                        )' > $tempFile && mv $tempFile $SOFTWAREJSON && writeLog "${1}" "$VERSION" "$CURRENTVERSION" "Updated!" 
                 else
-                        writeLog ${1} ${2} $CURRENTVERSION "Not an update!" 
+                        writeLog "${1}" "${2}" "$CURRENTVERSION" "Not an update!" 
                 fi
         else
-                writeLog ${1} ${2} $CURRENTVERSION "Unstable release!" 
+                writeLog "${1}" "${2}" "$CURRENTVERSION" "Unstable release!" 
         fi
 }
 
@@ -118,5 +118,3 @@ touch $LOGNAME
 
 checkReleases
 checkTags
-
-( "/mnt/storage/updateSite-scripts/writeInfoSite.sh" )

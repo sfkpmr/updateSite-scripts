@@ -13,20 +13,20 @@ bastienwirtz/homer,Homer
 tryghost/ghost,Ghost
 tensorflow/tensorflow,TensorFlow
 scala/scala,Scala
-thelounge/thelounge,"The Lounge"
+thelounge/thelounge,The Lounge
 twbs/bootstrap,Bootstrap
 angular/angular,Angular
 atom/atom,Atom
 expressjs/express,Express
 redis/redis,Redis
-docker/compose,"Docker Compose"
+docker/compose,Docker Compose
 belphemur/soundswitch,SoundSwitch
-home-assistant/core,"Home Assistant"
+home-assistant/core,Home Assistant
 kovidgoyal/calibre,Calibre
 audacity/audacity,Audacity
 airsonic/airsonic,Airsonic
 dani-garcia/vaultwarden,Vaultwarden
-gorhill/uBlock,"uBlock Origin"
+gorhill/uBlock,uBlock Origin
 dbeaver/dbeaver,DBeaver
 photonstorm/phaser,Phaser
 grafana/grafana,Grafana

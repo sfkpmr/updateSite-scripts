@@ -42,6 +42,6 @@ fi
 #Add new entry if name does not already exist.
 if ! $(cat $JSON | jq --arg NAME "${NAME}" 'any(.[].name; contains($NAME))') ; then
 	jq --arg NAME "$NAME" --arg GUIDEURL "$GUIDEURL" --arg DESCRIPTION "$DESCRIPTION" --arg COLOUR "$BOXCOLOUR" --arg DOWNLOADURL "$DOWNLOADURL" \
-	'. += [{"name": $NAME, "release_version": "-", "release_date": "-", "release_url": "-", "guide_url": $GUIDEURL, "description": $DESCRIPTION, "box": $COLOUR, "download_url": $DOWNLOADURL}]' $JSON > $TEMPJSON \
+	'. += [{"name": $NAME, "release_version": "0", "release_date": "0", "release_url": "0", "guide_url": $GUIDEURL, "description": $DESCRIPTION, "box": $COLOUR, "download_url": $DOWNLOADURL}]' $JSON > $TEMPJSON \
 	&& mv $TEMPJSON $JSON
 fi
