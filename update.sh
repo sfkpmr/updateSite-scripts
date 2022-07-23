@@ -4,14 +4,17 @@
 set -e
 
 USER=sfkpmr
-TOKEN=$(</home/marcus/.github_token)  
-SOFTWAREJSON=json/software.json
-TEMPFILE=json/tempjson.json
-RELEASESLIST=csv/releases.csv
-TAGSLIST=csv/tags.csv
+TOKEN=$(</home/marcus/.github_token)
+MYPATH=$(dirname "$0")
+SOFTWAREJSON=$MYPATH/json/software.json
+TEMPFILE=$MYPATH/json/tempjson.json
+RELEASESLIST=$MYPATH/csv/releases.csv
+TAGSLIST=$MYPATH/csv/tags.csv
 TODAY=$(TZ=Europe/Stockholm date +'%y-%m-%d')
-LOGDIRECTORY=logs
+LOGDIRECTORY=$MYPATH/logs
 LOGNAME=$LOGDIRECTORY/$(TZ=Europe/Stockholm date +'%Y-%m').log
+
+echo $LOGDIRECTORY
 
 writeLog() {
 
