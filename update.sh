@@ -4,7 +4,7 @@
 set -e
 
 USER=sfkpmr
-TOKEN=$(</home/marcus/Documents/.github_token) #gör ny TOKEN   
+TOKEN=$(</home/marcus/.github_token)  
 SOFTWAREJSON=json/software.json
 TEMPFILE=json/tempjson.json
 RELEASESLIST=csv/releases.csv
