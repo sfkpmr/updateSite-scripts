@@ -14,8 +14,6 @@ TODAY=$(TZ=Europe/Stockholm date +'%y-%m-%d')
 LOGDIRECTORY=$MYPATH/logs
 LOGNAME=$LOGDIRECTORY/$(TZ=Europe/Stockholm date +'%Y-%m').log
 
-echo $LOGDIRECTORY
-
 writeLog() {
 
         DATE=$(TZ=Europe/Stockholm date +'%y/%m/%d %T')
