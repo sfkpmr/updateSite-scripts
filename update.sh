@@ -56,7 +56,6 @@ checkReleases() {
 
                         updateList "${NAME}" ${RELEASEVERSION} ${RELEASEDATE:2} ${RELEASEURL} #Trimming two first characters
                 fi
-        #break
         done < ${RELEASESLIST}
 }
 
@@ -77,18 +76,11 @@ checkTags() {
 
 updateList() {
 
-        echo "Checking ${1} ${3} ${4}"
-
         VERSION=$(versionFilter ${2})
-        echo "DETTA KOM TILLBAKA $VERSION"
-
-        #Flytta kiwiirc till releases?
         
         if [[ "$VERSION" != -1 ]] ; then
 
                 CURRENTVERSION=$(jq -r --arg name "${1}" '.[] | select(.name == $name).release_version' $SOFTWAREJSON)
-                #echo $( cat $SOFTWAREJSON | jq -r --arg name "${1}" '.[] | select(.name == $name).release_version' )
-                #echo "Current version is $CURRENTVERSION for ${1}"
 
                 if [[ $(versionCheck $CURRENTVERSION $VERSION) -eq 1 ]]; then
                         cat $SOFTWAREJSON |
