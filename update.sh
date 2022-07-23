@@ -3,234 +3,110 @@
 #Exit immediately if a pipeline returns a non-zero status - https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
 set -e
 
-user=sfkpmr
-token=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
-rootPath=/srv
-publicPath=${rootPath}/software
-jsonFile=${rootPath}/json/software.json
-tempFile=${rootPath}/json/tempjson.json
-logFile=${rootPath}/log.log
-csvFolder=${rootPath}/csv
+USER=sfkpmr
+TOKEN=$(</home/marcus/.github_token)  
+SOFTWAREJSON=json/software.json
+TEMPFILE=json/tempjson.json
+RELEASESLIST=csv/releases.csv
+TAGSLIST=csv/tags.csv
+TODAY=$(TZ=Europe/Stockholm date +'%y-%m-%d')
+LOGDIRECTORY=logs
+LOGNAME=$LOGDIRECTORY/$(TZ=Europe/Stockholm date +'%Y-%m').log
 
-checkList () {
+writeLog() {
 
-if [ ! -f "$jsonFile" ]; then
-	echo "[]" > $jsonFile
-fi
+        DATE=$(TZ=Europe/Stockholm date +'%y/%m/%d %T')
+        echo "$DATE | ${1} | New release: ${2} Old: ${3} | ${4}" >> $LOGNAME
+}
 
-if grep -o -q "${1}" $jsonFile
-then
-        echo "${1} FINNS"
-else
-        echo "${1} FINNS INTE"
+versionCheck() {
 
-	randValue=$(shuf -i 1-3 -n 1)
-
-	if [ "$randValue" == 1 ]; then
-		boxColour=blue-box
-        elif [ "$randValue" == 2 ]; then
-		boxColour=green-box
-        else
-            	boxColour=red-box
+        #https://stackoverflow.com/questions/48491662/comparing-two-version-numbers-in-a-shell-script
+        printf -v versions '%s\n%s' "${2}" "${1}"
+        if [[ $versions = "$(sort -V <<< "$versions")" ]]; then
+                echo -1
+        else  
+                echo 1
         fi
-
-	#Add new item to JSON
-        jq --arg name "$1" --arg colour "$boxColour" '. += [{"name": $name, "releaseVersion": "-", "releaseDate": "-", "releaseURL": "-", "guideURL": "guideurl", "description": "description", "box": $colour}]' $jsonFile > $tempFile && mv $tempFile $jsonFile
-fi
-
 }
 
-updateList () {
+versionFilter() {
 
-echo "Adding ${1} ${2} ${3} ${4}" ${1} ${2} ${3} ${4}
-
-checkList "${1}"
-
-cat $jsonFile |
-        jq --arg name "${1}" --arg version ${2} --arg releaseDate ${3} --arg releaseURL ${4} 'map(if .name == $name
-                  then . + {"releaseDate": $releaseDate, "releaseVersion": $version, "releaseURL": $releaseURL}
-                  else .
-                  end
-                 )' > $tempFile && mv $tempFile $jsonFile
+        #Filter out unstable releases
+        #-z returns true if the string is null
+        if [[ -z $(echo ${1} | grep -i -E 'alpha|rc|dev|candidate|beta') ]]; then
+                echo $(echo ${1} | grep -P -i -o '([0-9]+(\.[0-9]+)+)')
+        else
+                echo -1
+        fi
 }
 
-validateVersion () {
-
-echo "ValidateVersion ${1} ${2} ${3} ${4}"
-
-#MIND THE SLASH
-fileCheck=${publicPath}/"${2//[[:blank:]]/}".html
-echo "File check: $fileCheck"
-if [ ! -f "$fileCheck" ]; then
-	echo "fil finns inte"
-	echo 0 > ${fileCheck}
-fi
-
-date=$(TZ=Europe/Stockholm date +'%y/%m/%d %T')
-read currentVersion < $fileCheck
-echo "Current version $currentVersion"
-echo "Checking version ${1}"
-echo ${1}
-
-IFS="." read ver1 ver2 ver3 ver4 <<< "$currentVersion"
-IFS="." read ver5 ver6 ver7 ver8 <<< "${1}"
-
-#ver1=$(echo "${ver1#"${ver1%%[!0]*}"}")
-#ver2=$(echo "${ver2#"${ver2%%[!0]*}"}")
-#ver3=$(echo "${ver3#"${ver3%%[!0]*}"}")
-#ver4=$(echo "${ver4#"${ver4%%[!0]*}"}")
-#ver5=$(echo "${ver5#"${ver5%%[!0]*}"}")
-#ver6=$(echo "${ver6#"${ver6%%[!0]*}"}")
-#ver7=$(echo "${ver7#"${ver7%%[!0]*}"}")
-#ver8=$(echo "${ver8#"${ver8%%[!0]*}"}")
-
-counter=$(echo ${1} | grep -o '\.' | wc -l)
-
-echo "ADAMPETER $ver1 $ver2 $ver3 $ver4 $ver5 $ver6 $ver7 $ver8" 
-
-if [[ "${1}" != "$currentVersion" ]]; then
-	if [[ "$ver1" -lt "$ver5" ]]; then
-		updateList "${2}" "${1}" "${3}" "${4}"
-		echo "${1}" > "$fileCheck"
-		echo "$date ${2} was updated to ${1} from $currentVersion" >> "$logFile"
-	elif [[ "$ver1" -eq "$ver5" ]]; then
-		if [[ "$ver2" -lt "$ver6" ]]; then
-			updateList "${2}" "${1}" "${3}" "${4}"
-			echo "${1}" > "$fileCheck"
-			echo "$date ${2} was updated to ${1} from $currentVersion" >> "$logFile"
-		elif [[ "$ver2" -eq "$ver6" ]]; then
-			if [[ "$ver3" -lt "$ver7" ]]; then
-				updateList "${2}" "${1}" "${3}" "${4}"
-				echo "${1}" > "$fileCheck"
-				echo "$date ${2} was updated to ${1} from $currentVersion" >> "$logFile"
-			elif [[ "$ver3" -eq "$ver7" ]]; then
-				if [[ "$ver4" -lt "$ver8" ]]; then
-					updateList "${2}" "${1}" "${3}" "${4}"
-					echo "${1}" > "$fileCheck"
-					echo "$date ${2} was updated to ${1} from $currentVersion" >> "$logFile"
-				else 
-					echo "$date ${2} was not updated. (${1} is lower than $currentVersion)" >> "$logFile"
-				fi
-			else
-				echo "$date ${2} was not updated. (${1} is lower than $currentVersion)" >> "$logFile"
-			fi
-		else
-			echo "$date ${2} was not updated. (${1} is lower than $currentVersion)" >> "$logFile"
-		fi
-	else
-		echo "$date ${2} was not updated. (${1} is lower than $currentVersion)" >> "$logFile"
-	fi
-elif [[ "${1}" == "$currentVersion" ]]; then
-	 echo "$date ${2} is already on version ${1}" >> "$logFile"
-fi
-
-}
-
-
-FILE=${csvFolder}/checkTags.csv
-while IFS=, read -r REPO NAME
+checkReleases() {
+        while IFS=, read -r REPO NAME
         do
-            echo "I got:$REPO|$NAME"
+                REPODATA=$(curl -u ${USER}:${TOKEN} -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${REPO}/releases/latest)
 
-            NAME=$(echo "$NAME" | tr -d '"')
-
-            echo "I got a second time:$REPO|$NAME"
-
-        repo=$(curl -u ${user}:${token} -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${REPO}/tags?per_page=100)
-
-        if (grep -o -i -q "${REPO}" <<<$repo)
-        then
-                echo "API OK";
-                #Discarding releases with alpha or rc in the name
-                #echo "Repo: $repo"
-		#releaseName=$(echo "$repo" | grep -o -P '(?<=name": ").*(?=",)' | grep -E '[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}' | grep -i -v -E 'alpha|rc|dev|candidate|beta' | sed -n '1p')
-                releaseName=$(echo "$repo" | grep -o -P '(?<=name": ").*(?=",)' | grep -E '[0-9]{1,3}'\\.'[0-9]{1,3}'\|'[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}' | grep -i -v -E 'alpha|rc|dev|candidate|beta' | sed -n '1p')
-                echo "releaseName: $releaseName"
-
-                counter=$(echo "$releaseName" | grep -o '\.' | wc -l)
-		if [ "$counter" == 1 ]; then
-                        version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[[:alnum:]]{1,6}')
-                elif [ "$counter" == 2 ]; then
-                        version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[0-9]{1,3}'\\.'[[:alnum:]]{1,6}')
-                elif [ "$counter" == 3 ]; then
-			version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[[:alnum:]]{1,6}')
-		else
-			echo "Bad version name $releaseName" >> "$logFile"
-		fi
-
-                tag=$(curl -u ${user}:${token} -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${REPO}/releases/tags/${releaseName})
-                releaseURL="https://github.com/${REPO}/releases/tag/${releaseName}"
-
-                #Check if has publishing date
-                if (grep -o -i -q "published_at" <<<$repo)
-                then
-                        #-P flag?
-                        releaseDate=$(echo "$tag" | grep -o -P '(?<=published_at": ").*(?=",)' | grep -Eo '[0-9]{1,2}'-'[0-9]{1,2}'-'[0-9]{1,2}')
+                if [[ $( echo $REPODATA | jq -r .message ) == "Not Found" ]]; then
+                        writeLog "${NAME}" "-" "-" "curl error!" 
                 else
-			#releaseDate="-"
-			releaseDate=$(TZ=Europe/Stockholm date +'%y-%m-%d')
+                        #REGEX generator https://regex-generator.olafneumann.org/
+                        RELEASEVERSION=$(echo "$REPODATA" | jq -r .tag_name ) 
+                        RELEASEDATE=$(echo "$REPODATA" | jq -r .published_at | grep -P -i -o '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+                        RELEASEURL=$(echo $REPODATA | jq -r .html_url)
+
+                        updateList "${NAME}" ${RELEASEVERSION} ${RELEASEDATE:2} ${RELEASEURL} #Trimming two first characters
                 fi
+        done < ${RELEASESLIST}
+}
 
-                        validateVersion ${version} "${NAME}" ${releaseDate} ${releaseURL}
-
-        else
-                echo "$repo" >> $logFile
-        fi
-
-done < ${FILE}
-
-FILE=${csvFolder}/checkReleases.csv
-while IFS=, read -r REPO NAME
+checkTags() {
+        while IFS=, read -r REPO NAME
         do
-            echo "I got:$REPO|$NAME"
-            NAME=$(echo "$NAME" | tr -d '"')
-            echo "I got a second time:$REPO|$NAME"
+                REPODATA=$(curl -u ${USER}:${TOKEN} -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${REPO}/tags?per_page=100) 
 
-        echo $REPO $NAME
-
-        repo=$(curl -u ${user}:${token} -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/${REPO}/releases/latest)
-
-        if (grep -o -i -q "${REPO}" <<<$repo)
-        then
-                echo "API OK"
-                releaseName=$(echo "$repo" | grep -o -P '(?<=tag_name": ").*(?=",)' | grep -i -v -E 'alpha|rc|dev|candidate|beta')
-                counter=$(echo "$releaseName" | grep -o '\.' | wc -l)
-
-                echo "Antal punkter: $counter i $releaseName"
-
-                if [ "$counter" == 1 ]; then
-                        version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[[:alnum:]]{1,3}')
-                elif [ "$counter" == 2 ]; then
-                        version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[0-9]{1,3}'\\.'[[:alnum:]]{1,3}')
-                elif [ "$counter" == 3 ]; then
-                        version=$(echo "$releaseName" | grep -Eo '[0-9]{1,4}'\\.'[0-9]{1,3}'\\.'[0-9]{1,3}'\\.'[[:alnum:]]{1,6}')
+                if [[ $( echo $REPODATA | grep 'Not Found' ) ]]; then
+                        writeLog "${NAME}" "-" "-" "curl error!"
                 else
-                        echo "No dots in ${NAME} releaseName, likely faulty release, or latest release excluded - setting version to 0." >> $logFile
-                        version=0
+                        TAGNAME=$(echo $REPODATA | jq -r '.[0].name' )
+                        #Use &&s?
+                        updateList "$NAME" "${TAGNAME}" "$TODAY" "https://github.com/$REPO/releases/tag/$TAGNAME"
                 fi
+        done < ${TAGSLIST}
+}
 
-                #Check if has publishing date
-                if (grep -o -i -q "published_at" <<<$repo)
-                then
-                        releaseDate=$(echo "$repo" | grep -o -P '(?<=published_at": ").*(?=",)' | grep -Eo '[0-9]{1,2}'-'[0-9]{1,2}'-'[0-9]{1,2}')
+updateList() {
+
+        VERSION=$(versionFilter ${2})
+        
+        if [[ "$VERSION" != -1 ]] ; then
+
+                CURRENTVERSION=$(jq -r --arg name "${1}" '.[] | select(.name == $name).release_version' $SOFTWAREJSON)
+
+                if [[ $(versionCheck $CURRENTVERSION $VERSION) -eq 1 ]]; then
+                        cat $SOFTWAREJSON |
+                        jq --arg name "${1}" --arg version "$VERSION" --arg releaseDate "${3}" --arg releaseURL "${4}" 'map(if .name == $name
+                        then . + {"release_date": $releaseDate, "release_version": $version, "release_url": $releaseURL}
+                        else .
+                        end
+                        )' > $TEMPFILE && mv $TEMPFILE $SOFTWAREJSON && writeLog "${1}" "$VERSION" "$CURRENTVERSION" "Updated!" 
                 else
-                        releaseDate="-"
+                        writeLog "${1}" "${2}" "$CURRENTVERSION" "Not an update!" 
                 fi
-
-                releaseURL="https://github.com/${REPO}/releases/tag/${releaseName}"
-
-
-                echo "BANAN"
-                echo "${version} ${NAME} ${releaseDate} ${releaseURL}"
-                validateVersion ${version} "${NAME}" ${releaseDate} ${releaseURL}
         else
-                echo $repo >> $logFile
+                writeLog "${1}" "${2}" "$CURRENTVERSION" "Unstable release!" 
         fi
+}
 
-done < ${FILE}
+if [ ! -f "$SOFTWAREJSON" ]; then
+        writeLog ERROR ERROR ERROR "Software list missing!" 
+        exit 1
+fi
 
-( "/srv/writeInfoSite.sh" )
+if [[ ! -d "$LOGDIRECTORY" ]]; then
+        mkdir $LOGDIRECTORY
+fi
 
-date=$(TZ=Europe/Stockholm date +'%y/%m/%d %T')
+touch $LOGNAME
 
-echo "Update run ended at $date" >> $logFile
+checkReleases
+checkTags
