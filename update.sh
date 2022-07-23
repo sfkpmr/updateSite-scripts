@@ -6,7 +6,7 @@ set -e
 USER=sfkpmr
 TOKEN=$(</home/marcus/Documents/.github_token) #gör ny TOKEN   
 SOFTWAREJSON=json/software.json
-tempFile=json/tempjson.json
+TEMPFILE=json/tempjson.json
 RELEASESLIST=csv/releases.csv
 TAGSLIST=csv/tags.csv
 TODAY=$(TZ=Europe/Stockholm date +'%y-%m-%d')
@@ -15,8 +15,8 @@ LOGNAME=$LOGDIRECTORY/$(TZ=Europe/Stockholm date +'%Y-%m').log
 
 writeLog() {
 
-        date=$(TZ=Europe/Stockholm date +'%y/%m/%d %T')
-        echo "$date | ${1} | New release: ${2} Old: ${3} | ${4}" >> $LOGNAME
+        DATE=$(TZ=Europe/Stockholm date +'%y/%m/%d %T')
+        echo "$DATE | ${1} | New release: ${2} Old: ${3} | ${4}" >> $LOGNAME
 }
 
 versionCheck() {
@@ -96,7 +96,7 @@ updateList() {
                         then . + {"release_date": $releaseDate, "release_version": $version, "release_url": $releaseURL}
                         else .
                         end
-                        )' > $tempFile && mv $tempFile $SOFTWAREJSON && writeLog "${1}" "$VERSION" "$CURRENTVERSION" "Updated!" 
+                        )' > $TEMPFILE && mv $TEMPFILE $SOFTWAREJSON && writeLog "${1}" "$VERSION" "$CURRENTVERSION" "Updated!" 
                 else
                         writeLog "${1}" "${2}" "$CURRENTVERSION" "Not an update!" 
                 fi
